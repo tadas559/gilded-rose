@@ -4,6 +4,8 @@ namespace app;
 use app\AgedBrie;
 use app\BackStage;
 use app\Conjured;
+use app\Sulfuras;
+require 'app/Sulfuras.php';
 require 'app/AgedBrie.php';
 require 'app/BackStage.php';
 require 'app/Conjured.php';
