@@ -20,8 +20,7 @@ class Conjured extends Item {
     if($this->quality <= 0) { 
     $this->quality = 0;
     }
-
-}
+    }
 }
 
 ?>

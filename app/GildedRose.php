@@ -1,30 +1,34 @@
 <?php
 
 namespace app;
-use app\AgedBrie;
-use app\BackStage;
-use app\Conjured;
-use app\Sulfuras;
-require 'app/Sulfuras.php';
-require 'app/AgedBrie.php';
-require 'app/BackStage.php';
-require 'app/Conjured.php';
+require 'app/Item.php';
 
-class GildedRose {
-    public function createItemByName($name,$quality,$sellIn) { 
-        if($name == "Aged brie") { 
-            return new AgedBrie($quality,$sellIn);
-        }
-        else if($name == "Backstage") { 
-            return new BackStage($quality,$sellIn);
-        }
+class GildedRose
+{
 
-        else if($name == "Conjured") { 
-            return new Conjured($quality,$sellIn);
-        }
+    public $items = array();
 
-        else if($name == "Sulfuras") { 
-            return new Sulfuras($quality,$sellIn);
+    public function updateItems() { 
+        foreach ($this->items as $value) { 
+            $value->update();
         }
-    } 
+    }
+
+    public function createItems($itemToCreate) { 
+        $tempItem = new Item("",0,0);
+        for($i = 0; $i < count($itemToCreate); $i++) {
+        $items[$i] = $tempItem->createItemByName($itemToCreate[$i]["name"],$itemToCreate[$i]["sellIn"],$itemToCreate[$i]["quality"]);
+        }
+        
+        $this->items = $items;
+    }
+
+    public function createAndUpdateItems($itemToCreate) { 
+        $this->createItems($itemToCreate);
+        $this->updateItems();
+    }
+
+
 }
+
+ ?>

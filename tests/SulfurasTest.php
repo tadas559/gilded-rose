@@ -39,13 +39,4 @@ class SulfurasTest extends PHPUnit\Framework\TestCase
         $this->assertEquals(0, $item->quality);
         $this->assertEquals(5, $item->sell_in);    
     }
-
-    public function test_sulfuras_before_sell_in_date_with_quality_maximum()
-    {
-        $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Sulfuras",5,50);
-        $item->update();
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(5, $item->sell_in);    
-    }
 }
