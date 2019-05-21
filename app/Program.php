@@ -12,11 +12,9 @@ class Program
         $itemsToCreate = array(array('name' => "Aged brie",'sellIn' => 10,'quality' => 20), array('name' => "Aged brie",'sellIn' => 11,'quality' => 23));
 
         $gildedRose = new GildedRose();
-        $gildedRose->createItemsArrayAndUpdate($itemsToCreate);
-
-        $i=0;
-
-        for($i = 0; $i < count($itemsToCreate); $i++) {
+        $gildedRose->createItemsArrayAndUpdate($itemsToCreate); // update items
+        
+        for($i = 0; $i < count($itemsToCreate); $i++) { // print items
         echo $gildedRose->items[$i]->quality;
         echo "\n";
         }
