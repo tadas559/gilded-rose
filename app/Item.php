@@ -4,6 +4,7 @@ namespace app;
 require 'app/Sulfuras.php';
 require 'app/AgedBrie.php';
 require 'app/BackStage.php';
+require 'app/Conjured.php';
 class Item {
 
     public $sell_in;

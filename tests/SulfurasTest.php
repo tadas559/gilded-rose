@@ -7,36 +7,32 @@ class SulfurasTest extends PHPUnit\Framework\TestCase
     public function test_sulfuras_before_sell_in_date()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Sulfuras",10,22);
-        $item->update();
-        $this->assertEquals(22, $item->quality);
-        $this->assertEquals(10, $item->sell_in);    
+        $gildedRose->createAndUpdateItems(array(array('name' => "Sulfuras",'sellIn' => 10,'quality' => 22)));
+        $this->assertEquals(22, $gildedRose->items[0]->quality);
+        $this->assertEquals(10, $gildedRose->items[0]->sell_in);
     }
 
     public function test_sulfuras_after_sell_in_date()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Sulfuras",0,22);
-        $item->update();
-        $this->assertEquals(22, $item->quality);
-        $this->assertEquals(0, $item->sell_in);    
+        $gildedRose->createAndUpdateItems(array(array('name' => "Sulfuras",'sellIn' => 0,'quality' => 22)));
+        $this->assertEquals(22, $gildedRose->items[0]->quality);
+        $this->assertEquals(0, $gildedRose->items[0]->sell_in);
     }
 
     public function test_sulfuras_after_sell_in_date_with_quality_zero()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Sulfuras",0,0);
-        $item->update();
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(0, $item->sell_in);    
+        $gildedRose->createAndUpdateItems(array(array('name' => "Sulfuras",'sellIn' => 0,'quality' => 0)));
+        $this->assertEquals(0, $gildedRose->items[0]->quality);
+        $this->assertEquals(0, $gildedRose->items[0]->sell_in);
     }
 
     public function test_sulfuras_before_sell_in_date_with_quality_zero()
-    {
+    { 
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Sulfuras",5,0);
-        $item->update();
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(5, $item->sell_in);    
+        $gildedRose->createAndUpdateItems(array(array('name' => "Sulfuras",'sellIn' => 5,'quality' => 0)));
+        $this->assertEquals(0, $gildedRose->items[0]->quality);
+        $this->assertEquals(5, $gildedRose->items[0]->sell_in);
     }
 }

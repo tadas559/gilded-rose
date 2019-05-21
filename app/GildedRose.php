@@ -28,7 +28,6 @@ class GildedRose
         $this->updateItems();
     }
 
-
 }
 
  ?>

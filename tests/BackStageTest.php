@@ -8,72 +8,64 @@ class BackStageTest extends PHPUnit\Framework\TestCase
     public function test_backstage_before_sell_in_date_with_normal_date()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",12,22);
-        $item->update();
-        $this->assertEquals(23, $item->quality);
-        $this->assertEquals(11, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 12,'quality' => 22)));
+        $this->assertEquals(23, $gildedRose->items[0]->quality);
+        $this->assertEquals(11, $gildedRose->items[0]->sell_in);
     }
 
     public function test_backstage_before_sell_in_date_with_sell_in_date_range_from_10_to_6()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",9,12);
-        $item->update();
-        $this->assertEquals(14, $item->quality);
-        $this->assertEquals(8, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 9,'quality' => 12)));
+        $this->assertEquals(14, $gildedRose->items[0]->quality);
+        $this->assertEquals(8, $gildedRose->items[0]->sell_in);
     }
 
     public function test_backstage_before_sell_in_date_with_sell_in_date_lower_than_6()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",5,12);
-        $item->update();
-        $this->assertEquals(15, $item->quality);
-        $this->assertEquals(4, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 5,'quality' => 12)));
+        $this->assertEquals(15, $gildedRose->items[0]->quality);
+        $this->assertEquals(4, $gildedRose->items[0]->sell_in);
     }
 
     public function test_backstage_after_sell_in_date()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",0,12);
-        $item->update();
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-1, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 0,'quality' => 12)));
+        $this->assertEquals(0, $gildedRose->items[0]->quality);
+        $this->assertEquals(-1, $gildedRose->items[0]->sell_in);
     }
 
     public function test_backstage_before_sell_in_date_with_maximum_quality()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",5,50);
-        $item->update();
-        $this->assertEquals(50, $item->quality);
-        $this->assertEquals(4, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 5,'quality' => 50)));
+        $this->assertEquals(50, $gildedRose->items[0]->quality);
+        $this->assertEquals(4, $gildedRose->items[0]->sell_in);
     }
 
     public function test_backstage_after_sell_in_date_with_maximum_quality()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",0,50);
-        $item->update();
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-1, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 0,'quality' => 50)));
+        $this->assertEquals(0, $gildedRose->items[0]->quality);
+        $this->assertEquals(-1, $gildedRose->items[0]->sell_in);
     }
 
     public function test_backstage_after_sell_in_date_with_quality_zero()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",0,0);
-        $item->update();
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-1, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 0,'quality' => 0)));
+        $this->assertEquals(0, $gildedRose->items[0]->quality);
+        $this->assertEquals(-1, $gildedRose->items[0]->sell_in);
     }
 
     public function test_backstage_before_sell_in_date_with_quality_zero()
     {
         $gildedRose = new GildedRose();
-        $item = $gildedRose->createItemByName("Backstage",0,5);
-        $item->update();
-        $this->assertEquals(0, $item->quality);
-        $this->assertEquals(-1, $item->sell_in);
+        $gildedRose->createAndUpdateItems(array(array('name' => "Backstage",'sellIn' => 0,'quality' => 5)));
+        $this->assertEquals(0, $gildedRose->items[0]->quality);
+        $this->assertEquals(-1, $gildedRose->items[0]->sell_in);
     }
 }
