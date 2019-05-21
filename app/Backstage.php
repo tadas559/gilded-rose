@@ -10,12 +10,12 @@ class BackStage extends Item {
     $this->quality += 1;
     $this->sell_in -= 1;
 
-    if($this->sell_in <= 10 && $this->sell_in > 5) {
+    if($this->sell_in <= 10) {
     $this->quality += 1;
     }
     
     if ($this->sell_in <=5 ) { 
-    $this->quality += 2;
+    $this->quality += 1;
     }
 
     if($this->sell_in <= 0) {
@@ -26,6 +26,7 @@ class BackStage extends Item {
     $this->quality = 50;
     }
     }
+
 }
 
 ?>

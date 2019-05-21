@@ -2,8 +2,6 @@
 
 namespace app;
 require_once 'app/Item.php';
-
-
 class AgedBrie extends Item {
 
     public function update() { 
