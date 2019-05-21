@@ -7,20 +7,21 @@ require 'app/BackStage.php';
 require 'app/Conjured.php';
 class Item {
 
-    public $sell_in;
+    public $sellIn; 
     public $quality;
     public $name;
     
-    function __construct($name,$sell_in, $quality) {
+    function __construct($name,$sellIn, $quality) {
         $this->name = $name;
-        $this->sell_in = $sell_in;
+        $this->sellIn = $sellIn;
         $this->quality = $quality;
     }
 
     public function __toString() {
-        return "{$this->name}, {$this->sell_in}, {$this->quality}";
+        return "{$this->name}, {$this->sellIn}, {$this->quality}";
     }
 
+    // creates object for particular item type
     public function createItemByName($name,$quality,$sellIn) { 
          
         switch ($name) {
@@ -39,6 +40,19 @@ class Item {
         default:
             return new Item($name,$quality,$sellIn);
         }
+    }
+
+    // checks for quality overflow and fixes it
+    public function checkAndFixQualityOverflow() { 
+        if($this->quality > 50) {
+            $this->quality = 50;
+        }
+    }
+
+    // updates item which does not have aged brie, backstage, conjured or sulfuras name
+    public function update() {
+        $this->quality = -1;
+        $this->sellIn = -1;
     }
 }
 
